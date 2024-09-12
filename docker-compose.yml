@@ -19,8 +19,8 @@ services:
     container_name: mail-dev-bs
     image: maildev/maildev
     ports:
-      - 1080:1080
-      - 1025:1025
+      - 1080:1080  # display our app
+      - 1025:1025  # access our app
 
 #
 
