@@ -12,6 +12,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.security.Principal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -23,15 +24,15 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "user")
+@Table(name = "\"user\"")
 @EntityListeners(AuditingEntityListener.class)
 public class User implements UserDetails, Principal {
 
     @Id
     @GeneratedValue
     private Integer id;
-    private String firstName;
-    private String lastName;
+    private String firstname;
+    private String lastname;
     private LocalDate dateOfBirth;
     @Column(unique = true)
     private String email;
@@ -45,14 +46,14 @@ public class User implements UserDetails, Principal {
 
     @CreatedDate
     @Column(nullable = false, updatable = false)
-    private  LocalDate createdDate;
+    private LocalDateTime createdDate;
     @LastModifiedDate
     @Column(insertable = false)
-    private LocalDate lastModifiedDate;
+    private LocalDateTime lastModifiedDate;
 
     @Override
     public String getName() {
-        return "";
+        return email;
     }
 
     @Override
@@ -93,7 +94,7 @@ public class User implements UserDetails, Principal {
         return enabled;
     }
 
-    private String fullName() {
-        return firstName + " " + lastName;
+    public String fullName() {
+        return firstname + " " + lastname;
     }
 }

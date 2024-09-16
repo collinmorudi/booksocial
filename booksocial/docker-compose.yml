@@ -1,0 +1,31 @@
+services:
+  postgres:
+    container_name: postgres-sql-bs
+    image: postgres
+    environment:
+      POSTGRES_USER: username
+      POSTGRES_PASSWORD: password
+      PGDATA: /var/lib/postgresql/data
+      POSTGRES_DB: book_social
+    volumes:
+      - postgres:/data/postgres
+    ports:
+      - 5432:5432
+    networks:
+      - book-social-net
+    restart: unless-stopped
+
+  mail-dev:
+    container_name: mail-dev-bs
+    image: maildev/maildev
+    ports:
+      - 1080:1080  # display our app
+      - 1025:1025  # access our app
+
+networks:
+  book-social-net:
+    driver: bridge
+
+volumes:
+  postgres:
+    driver: local
