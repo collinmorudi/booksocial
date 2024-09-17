@@ -3,7 +3,7 @@
 This project is currently under active development. I am working diligently to bring you a comprehensive and well-documented release.
 
 ## Project Overview
-Book Management and Sharing Web Application
+**Book Management and Sharing Web Application**<br>
 Our goal is to provide a robust and efficient solution with the latest industry standards in mind. However, as this project is still in development, detailed documentation is not yet available.
 
 ## Features
