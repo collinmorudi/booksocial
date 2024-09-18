@@ -17,13 +17,42 @@ import java.util.Map;
 import static java.nio.charset.StandardCharsets.UTF_8;
 import static org.springframework.mail.javamail.MimeMessageHelper.MULTIPART_MODE_MIXED;
 
+/**
+ * The EmailService class is responsible for sending emails asynchronously
+ * using a specified email template and context variables. It utilizes
+ * Spring's JavaMailSender and SpringTemplateEngine for email creation
+ * and template processing respectively.
+ */
 @Service
 @Slf4j
 @RequiredArgsConstructor
 public class EmailService {
+    /**
+     * Handles the creation and sending of emails.
+     * Utilized by the EmailService class to send emails asynchronously.
+     * This instance of JavaMailSender is responsible for sending the emails
+     * created and configured by the EmailService.
+     */
     private final JavaMailSender mailSender;
+    /**
+     * Template engine for processing email templates.
+     * Utilizes SpringTemplateEngine for rendering HTML email content with context variables.
+     */
     private final SpringTemplateEngine templateEngine;
 
+    /**
+     * Sends an email asynchronously using the specified email template and
+     * context variables. This method constructs and sends a MIME email message
+     * using the provided parameters.
+     *
+     * @param to the recipient's email address
+     * @param username the recipient's username
+     * @param emailTemplate the email template to be used; if null, "confirm-email" is used
+     * @param activationCode the activation code to be included in the email
+     * @param confirmationUrl the confirmation URL to be included in the email
+     * @param subject the subject of the email
+     * @throws MessagingException if an error occurs while creating or sending the email
+     */
     @Async
     public void sendEmail(
             String to,
