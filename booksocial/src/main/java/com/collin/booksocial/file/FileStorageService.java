@@ -17,14 +17,28 @@ import java.nio.file.Paths;
 import static java.io.File.separator;
 import static java.lang.System.currentTimeMillis;
 
+/**
+ * Service for handling file storage operations.
+ */
 @Service
 @Slf4j
 @RequiredArgsConstructor
 public class FileStorageService {
 
+    /**
+     * The base directory path where uploaded photos will be stored.
+     * This path is configured via the external application properties file using the key `application.file.upload.photos-output-path`.
+     */
     @Value("${application.file.upload.photos-output-path}")
     private String fileUploadPath;
 
+    /**
+     * Saves a file to a specific user directory.
+     *
+     * @param sourceFile the file to be saved.
+     * @param userId the ID of the user for whom the file is being saved.
+     * @return the path where the file was saved, or null if the save operation failed.
+     */
     public String saveFile(
             @Nonnull MultipartFile sourceFile,
             @Nonnull Integer userId
@@ -33,6 +47,13 @@ public class FileStorageService {
         return uploadFile(sourceFile, fileUploadSubPath);
     }
 
+    /**
+     * Uploads the given file to a specified sub-path within the upload directory.
+     *
+     * @param sourceFile The file to be uploaded. Must not be null.
+     * @param fileUploadSubPath The sub-path within the upload directory where the file should be stored. Must not be null.
+     * @return The path to the uploaded file if the upload is successful; null otherwise.
+     */
     private String uploadFile(
             @Nonnull MultipartFile sourceFile,
             @Nonnull String fileUploadSubPath
@@ -60,6 +81,13 @@ public class FileStorageService {
         return null;
     }
 
+    /**
+     * Extracts the file extension from a given file name.
+     *
+     * @param fileName The name of the file from which to extract the extension.
+     * @return The file extension in lower case, or an empty string if the file name
+     *         does not contain an extension or is null/empty.
+     */
     private String getFileExtension(String fileName) {
         if (fileName == null || fileName.isEmpty()) {
             return "";
