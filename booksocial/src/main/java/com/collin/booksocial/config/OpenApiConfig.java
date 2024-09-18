@@ -14,6 +14,16 @@ import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.security.SecurityScheme;
 import io.swagger.v3.oas.annotations.servers.Server;
 
+/**
+ * Configuration class for setting up OpenAPI documentation in a Spring application.
+ *
+ * This class uses annotations to define the OpenAPI specification details, including API information,
+ * server details, and security schemes.
+ *
+ * The API information includes the contact details, description, title, version, license, and terms of service.
+ * Two server environments are specified: Local ENV and PROD ENV.
+ * A JWT-based security scheme is defined with bearer authentication.
+ */
 @OpenAPIDefinition(
         info = @Info(
                 contact = @Contact(
