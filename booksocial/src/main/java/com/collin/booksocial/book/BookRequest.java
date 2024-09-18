@@ -4,6 +4,13 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
+/**
+ * Represents a request to create or update a book record.
+ *
+ * The BookRequest class holds information about a book, including the title, author name, ISBN, and synopsis.
+ * Additionally, it indicates whether the book is shareable.
+ * Each field is validated to ensure that it is not null, empty, or blank, with custom messages for validation errors.
+ */
 public record BookRequest(
         Integer id,
         @NotNull(message = "100")
