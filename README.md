@@ -81,6 +81,11 @@ For any issues or bug reports, please use the [issue tracker](https://github.com
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
+## Related Projects
+
+- [Library Management System](https://github.com/YourUsername/LibraryManagementSystem): A system for managing library books, lenders, and borrowing activities.
+- [Community Book Club](https://github.com/YourUsername/CommunityBookClub): An application for book club members to schedule meetings, discuss books, and share reading lists.
+
 ## Contributors
 
 - Collin Morudi
